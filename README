@@ -1,0 +1,14 @@
+BATS (Basic Asset Tracking System) created by Geoffrey Emerson circa 2006-2008.
+
+BATS was originally called AssetDB and was created from scratch while I learned how PHP connected to a database. PostgreSQL was chosen due to its great reputation at the time. The goal was to replace our Excel spreadsheet tracking system (yikes) with a real database including history tracking and easy updating tools.
+
+The work flow is designed from the ground up with the user in mind to make moves, adds, and decommissioning as easy as possible, to reduce the temptation to procrastinate updating the asset tracking and fall behind your real world deployment state.
+
+The first commit here is the raw state the app was in when I left that job, with the exception of some hard coded passwords (yikes) changed to environment variables. We used one real Postgres user account to connect, and didn't have any kind of real user password system. It was a small IT group and we just trusted each other to correctly use the rudimentary login provided by $_SERVER['PHP_AUTH_USER'] and the header() function.
+
+My plan is to get this up and running on a free Heroku dyno, then polish it up a bit and use it as a demo site. I'll push changes here and update with details to make it simpler for others to use.
+
+-Note: Required database permissions-
+Each login user will need permissions such as the following:
+GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO testuser
+GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO testuser
