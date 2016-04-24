@@ -1,0 +1,71 @@
+A:link {text-decoration: none; color: #dd5555;}
+A:visited {text-decoration: none; color: #dd5555;}
+A:active {text-decoration: none; color: green;}
+A:hover {text-decoration: underline; color: #dd55dd;}
+
+body {background-color: #333333}
+h1 {background-color: transparent}
+h2 {background-color: transparent}
+p {background-color: transparent}
+h1, h2, p, input, table {color:  #7777ee}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0pt;
+	border: 1px solid #555555;
+	empty-cells: show;
+}
+
+.outerframe {
+	border: 0px;
+	vertical-align: top;
+	border-spacing: 10pt;
+}
+
+.noframe {
+	border: 0px;
+}
+
+td {
+	border: 1px solid #555555;
+	padding: 2px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.left {
+	text-align: left;
+	padding-left:  1.5em;
+	padding-right: 1em;
+}
+
+.notetext {
+	width: 600px;
+	white-space: normal;
+	text-align: left;
+	padding-left:  1.5em;
+	padding-right: 1em;
+}
+
+table.header {
+	border: 0px solid #555555;
+}
+
+td.header, .tag {
+	border: 0px solid #555555;
+	vertical-align: top;
+	width: 125px;
+}
+
+td.tag {
+	width: 300;
+}
+form {
+	color: #5555dd;
+}
+input {
+	background-color: #555555;
+	border-color: #000000;
+	border-width: 1px 0 0 0;
+	font-size: 95%;
+}
