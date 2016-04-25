@@ -16,8 +16,8 @@ function connect_to_db() {
 	$db = pg_connect($connect_string);
 
 	// Testing the Heroku environment:
-	echo 'Database path: ' . $db_env["path"] . '<br/>';
-	echo 'Connection String: ' . $connect_string . '<br/>';
+	// echo 'Database path: ' . $db_env["path"] . '<br/>';
+	// echo 'Connection String: ' . $connect_string . '<br/>';
 
 	// add code to respond to connection failures
 }
