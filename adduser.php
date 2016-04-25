@@ -12,7 +12,7 @@
 	$dept = $_POST[pass_dept];
 
 	// Connect to DB
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]");
+	connect_to_db();
 
 	// Get new userid
 	$query = "SELECT max(userid) AS highest FROM user_tbl";

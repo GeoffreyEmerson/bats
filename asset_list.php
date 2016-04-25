@@ -8,12 +8,14 @@
 	html_header('HI Asset DB - Asset List','new_value');
 	include("top_menu.php");
 
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]")
-		or die('Could not connect: ' . pg_last_error());
+	connect_to_db();
 
 	// Check for passed sort variables
 	if ( isset($_GET["active"]) ) { $active = $_GET["active"]; } else { $active = 't'; }
-	if ( isset($_GET["sort"]) ) { $sort_by = $_GET["sort"]; } else  { $sort_by = "assetid"; }
+	if ( isset($_GET["sort"]) ) { $sort_by = $_GET["sort"]; } else { $sort_by = "assetid"; }
+	if ( $sort_by == "description" || $sort_by == "serial" || $sort_by == "type" || $sort_by == "status" ) {
+		$sort_by = "lower(" . $sort_by . ")";
+	}
 	if ( isset($_GET["order"]) ) { $order = $_GET["order"]; } else { $order = "desc"; }
 	if ( isset($_GET["search"]) AND isset($_GET["key"]) ) {
 		$query_field = $_GET["search"];
@@ -33,7 +35,7 @@
 			) AS usernames
 			ON assetid=assetid_fkey
 			WHERE (a.active='$active' OR a.active isnull) $search_string
-			ORDER BY lower($sort_by) $order";
+			ORDER BY $sort_by $order";
 
 	$pass_array['query']=$query;
 

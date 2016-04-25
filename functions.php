@@ -5,8 +5,12 @@ $cell = '<td> %s </td>';
 function connect_to_db() {
 
 	// replace this line with custom user info
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]");
-
+	$connect_string  = "host=" . getenv("DB_HOST")
+									 . " port=" . getenv("DB_PORT")
+									 . " dbname=" . getenv("DB_NAME")
+									 . " user=" . getenv("DB_USER")
+									 . " password=" . getenv("DB_PASS");
+	$db = pg_connect($connect_string);
 	// add code to respond to invalid users or passwords
 }
 

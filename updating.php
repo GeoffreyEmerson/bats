@@ -32,7 +32,7 @@ function error_check($passed_result, $passed_query) { //check queries for errors
 	}
 
 	// Connect to DB
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]");
+	connect_to_db();
 
 	// Check for Assignment change
 	if ($current_tbl == 'assignment_tbl') {

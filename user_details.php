@@ -8,7 +8,7 @@
 	// Connect to database
 	// and initialize passed parameters
 
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]");
+	connect_to_db();
 	$current_tbl = "user_tbl";
 
 	if ( ($userid = $_GET["user"]) || ($userid == 0) ) {

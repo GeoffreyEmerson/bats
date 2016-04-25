@@ -12,8 +12,7 @@
 	include("functions.php");
 	include("top_menu.php");
 
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]")
-		or die('Could not connect: ' . pg_last_error());
+	connect_to_db();
 
 	// Get sort variables
 	if ( !($sort_by = $_GET["sort"]) ) {$sort_by = "department";}

@@ -1,20 +1,19 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="assetdb.css" />
-</head>
-<body>
-
-
-
 <?php
 
+	// Page timer
+	$stimer = explode( ' ', microtime() );
+	$stimer = $stimer[1] + $stimer[0];
+
+	// Script start
+	include("functions.php");
+	include("jscript.html");
+	html_header('HI Asset DB - Asset List','new_value');
 	include("top_menu.php");
+
+	connect_to_db();
 
 	print "<table>\n";
 	print "<tr><td> All Fields (Raw)</td></tr>\n";
-
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]")
-		or die('Could not connect: ' . pg_last_error());
 
 	$query = "SELECT * FROM asset_tbl ORDER BY assetid DESC";
 
@@ -32,8 +31,18 @@
 
 	}
 
-?>
+	print "</table>\n>";
 
-</table>
-</body>
-</html>
+	//Display page timer
+	$etimer = explode( ' ', microtime() );
+	$etimer = $etimer[1] + $etimer[0];
+	print "<br>\n<p style=\"margin:auto; text-align:left\">";
+	print "<b>" . $row_count . " rows retrieved.</b><br>\n<br>\n";
+	printf( "Page generated in <b>%f</b> seconds.", ($etimer-$stimer) );
+	print "</p>\n";
+
+
+	print "</body>\n>";
+	print "</html>\n>";
+
+?>

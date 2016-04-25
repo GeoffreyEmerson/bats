@@ -14,7 +14,7 @@
 	if ($current_tbl=="user_notes_tbl") {$id_type="userid";} else {$id_type="assetid";}
 
 	// Connect to DB
-	$db = pg_connect("host=$_ENV["HOST"] port=$_ENV["PORT"] dbname=$_ENV["DBNAME"] user=$_ENV["USER"] password=$_ENV["USER_PASS"]");
+	connect_to_db();
 
 	// Set up UPDATE query
 	$query = "INSERT INTO ".$current_tbl." (".$id_type.",note,datetime,signature) VALUES ('" . $current_id . "','" . $new_vaule . "','" . date('m/d/Y h:i:s A') . "','$signature')";
