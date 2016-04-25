@@ -4,14 +4,22 @@ $cell = '<td> %s </td>';
 
 function connect_to_db() {
 
-	// replace this line with custom user info
-	$connect_string  = "host=" . getenv("DB_HOST")
-									 . " port=" . getenv("DB_PORT")
-									 . " dbname=" . getenv("DB_NAME")
-									 . " user=" . getenv("DB_USER")
-									 . " password=" . getenv("DB_PASS");
+	// get database info from the heroku environment variable
+	$db_env = parse_url(getenv('DATABASE_URL'));
+
+	// build the database connection string
+	$connect_string  = "host=" . $db_env["host"]
+									 . " port=" . $db_env["port"]
+									 . " dbname=" . ltrim($db_env["path"],'/')
+									 . " user=" . $db_env["user"]
+									 . " password=" . $db_env["pass"];
 	$db = pg_connect($connect_string);
-	// add code to respond to invalid users or passwords
+
+	// Testing the Heroku environment:
+	echo 'Database path: ' . $db_env["path"] . '<br/>';
+	echo 'Connection String: ' . $connect_string . '<br/>';
+
+	// add code to respond to connection failures
 }
 
 function error_check($result,$query) {
